@@ -1,0 +1,70 @@
+[
+  {
+    "case_id": "interactive",
+    "run_id": "32555460-e93e-44ed-b0ce-d31709de177c",
+    "query": "Tra cứu số ngày phép còn lại và chính sách bảo hiểm của NV001",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:46.674801+00:00",
+    "step": 1,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ hr_query (tóm tắt hành động).",
+    "tool_call_id": "mock-1",
+    "tool_name": "hr_query",
+    "arguments": {
+      "employee_id": "NV001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "data_source": "fictional_hr_lab",
+      "employee_id": "NV001",
+      "data": {
+        "full_name": "Nguyễn Văn An",
+        "leave_balance": 12,
+        "manager": "Trần Minh Hà",
+        "available_days": 12,
+        "reserved_days": 0,
+        "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+        "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+      }
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "server": "hr-assistant-mcp-server",
+      "tool": "hr_query",
+      "result": {
+        "status": "SUCCESS",
+        "data_source": "fictional_hr_lab",
+        "employee_id": "NV001",
+        "data": {
+          "full_name": "Nguyễn Văn An",
+          "leave_balance": 12,
+          "manager": "Trần Minh Hà",
+          "available_days": 12,
+          "reserved_days": 0,
+          "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+          "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+        }
+      }
+    },
+    "llm_latency_ms": 0.149,
+    "tool_latency_ms": 0.097,
+    "latency_ms": 0.246
+  },
+  {
+    "case_id": "interactive",
+    "run_id": "32555460-e93e-44ed-b0ce-d31709de177c",
+    "query": "Tra cứu số ngày phép còn lại và chính sách bảo hiểm của NV001",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:46.674801+00:00",
+    "step": 2,
+    "action_type": "FINAL_ANSWER",
+    "thought": "Mô hình trả lời sau các quan sát hiện có (nhãn sự kiện, không phải suy nghĩ nội bộ).",
+    "output": "NV001: còn 12 ngày phép. Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+    "latency_ms": 0.016
+  }
+]

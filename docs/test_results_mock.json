@@ -1,0 +1,66 @@
+{
+  "mode": "mock",
+  "provider": "MockOfflineProvider",
+  "passed": 5,
+  "total": 5,
+  "results": [
+    {
+      "case_id": "TC01",
+      "passed": true,
+      "checks": {
+        "final_answer": true,
+        "tool_sequence": true,
+        "statuses": true,
+        "answer_evidence": true,
+        "baseline": true
+      }
+    },
+    {
+      "case_id": "TC02",
+      "passed": true,
+      "checks": {
+        "final_answer": true,
+        "tool_sequence": true,
+        "statuses": true,
+        "answer_evidence": true,
+        "baseline": true
+      }
+    },
+    {
+      "case_id": "TC03",
+      "passed": true,
+      "checks": {
+        "final_answer": true,
+        "tool_sequence": true,
+        "statuses": true,
+        "answer_evidence": true,
+        "leave_arguments": true,
+        "baseline": true
+      }
+    },
+    {
+      "case_id": "TC04",
+      "passed": true,
+      "checks": {
+        "final_answer": true,
+        "tool_sequence": true,
+        "statuses": true,
+        "answer_evidence": true,
+        "leave_arguments": true,
+        "baseline": true
+      }
+    },
+    {
+      "case_id": "TC05",
+      "passed": true,
+      "checks": {
+        "final_answer": true,
+        "tool_sequence": true,
+        "statuses": true,
+        "answer_evidence": true,
+        "baseline": true
+      }
+    }
+  ],
+  "note": "Kiểm tra cấu trúc và bằng chứng cơ bản; đọc lại câu trả lời để đánh giá nội dung."
+}

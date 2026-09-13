@@ -1,0 +1,426 @@
+[
+  {
+    "case_id": "TC01",
+    "query": "Bạn có thể giới thiệu khả năng của trợ lý nhân sự không?",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "action_type": "BASELINE",
+    "output": "[Mock Baseline] Tôi không có công cụ tra cứu hồ sơ hoặc tạo đơn.",
+    "latency_ms": 0.044
+  },
+  {
+    "case_id": "TC01",
+    "run_id": "a6658acc-ffee-43a6-a9a4-6602022c5e31",
+    "query": "Bạn có thể giới thiệu khả năng của trợ lý nhân sự không?",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 1,
+    "action_type": "FINAL_ANSWER",
+    "thought": "Mô hình trả lời sau các quan sát hiện có (nhãn sự kiện, không phải suy nghĩ nội bộ).",
+    "output": "Tôi có thể tra cứu ngày phép, bảo hiểm và tạo đơn mô phỏng. Vui lòng cung cấp mã nhân viên nếu cần tra cứu.",
+    "latency_ms": 0.055
+  },
+  {
+    "case_id": "TC02",
+    "query": "Tra cứu số ngày phép còn lại và chính sách bảo hiểm của NV001.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "action_type": "BASELINE",
+    "output": "[Mock Baseline] Tôi không có công cụ tra cứu hồ sơ hoặc tạo đơn.",
+    "latency_ms": 0.017
+  },
+  {
+    "case_id": "TC02",
+    "run_id": "2be47b36-f4ed-4219-b84b-43150a40d288",
+    "query": "Tra cứu số ngày phép còn lại và chính sách bảo hiểm của NV001.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 1,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ hr_query (tóm tắt hành động).",
+    "tool_call_id": "mock-1",
+    "tool_name": "hr_query",
+    "arguments": {
+      "employee_id": "NV001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "data_source": "fictional_hr_lab",
+      "employee_id": "NV001",
+      "data": {
+        "full_name": "Nguyễn Văn An",
+        "leave_balance": 12,
+        "manager": "Trần Minh Hà",
+        "available_days": 12,
+        "reserved_days": 0,
+        "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+        "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+      }
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "server": "hr-assistant-mcp-server",
+      "tool": "hr_query",
+      "result": {
+        "status": "SUCCESS",
+        "data_source": "fictional_hr_lab",
+        "employee_id": "NV001",
+        "data": {
+          "full_name": "Nguyễn Văn An",
+          "leave_balance": 12,
+          "manager": "Trần Minh Hà",
+          "available_days": 12,
+          "reserved_days": 0,
+          "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+          "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+        }
+      }
+    },
+    "llm_latency_ms": 0.008,
+    "tool_latency_ms": 0.036,
+    "latency_ms": 0.044
+  },
+  {
+    "case_id": "TC02",
+    "run_id": "2be47b36-f4ed-4219-b84b-43150a40d288",
+    "query": "Tra cứu số ngày phép còn lại và chính sách bảo hiểm của NV001.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 2,
+    "action_type": "FINAL_ANSWER",
+    "thought": "Mô hình trả lời sau các quan sát hiện có (nhãn sự kiện, không phải suy nghĩ nội bộ).",
+    "output": "NV001: còn 12 ngày phép. Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+    "latency_ms": 0.006
+  },
+  {
+    "case_id": "TC03",
+    "query": "Tạo đơn nghỉ phép cho NV001 từ 2026-09-15 đến 2026-09-16, lý do: việc gia đình.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "action_type": "BASELINE",
+    "output": "[Mock Baseline] Tôi không có công cụ tra cứu hồ sơ hoặc tạo đơn.",
+    "latency_ms": 0.023
+  },
+  {
+    "case_id": "TC03",
+    "run_id": "a43637f1-8e0e-465e-949c-b0631981a87f",
+    "query": "Tạo đơn nghỉ phép cho NV001 từ 2026-09-15 đến 2026-09-16, lý do: việc gia đình.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 1,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ hr_query (tóm tắt hành động).",
+    "tool_call_id": "mock-1",
+    "tool_name": "hr_query",
+    "arguments": {
+      "employee_id": "NV001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "data_source": "fictional_hr_lab",
+      "employee_id": "NV001",
+      "data": {
+        "full_name": "Nguyễn Văn An",
+        "leave_balance": 12,
+        "manager": "Trần Minh Hà",
+        "available_days": 12,
+        "reserved_days": 0,
+        "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+        "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+      }
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "server": "hr-assistant-mcp-server",
+      "tool": "hr_query",
+      "result": {
+        "status": "SUCCESS",
+        "data_source": "fictional_hr_lab",
+        "employee_id": "NV001",
+        "data": {
+          "full_name": "Nguyễn Văn An",
+          "leave_balance": 12,
+          "manager": "Trần Minh Hà",
+          "available_days": 12,
+          "reserved_days": 0,
+          "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+          "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+        }
+      }
+    },
+    "llm_latency_ms": 0.009,
+    "tool_latency_ms": 0.038,
+    "latency_ms": 0.047
+  },
+  {
+    "case_id": "TC03",
+    "run_id": "a43637f1-8e0e-465e-949c-b0631981a87f",
+    "query": "Tạo đơn nghỉ phép cho NV001 từ 2026-09-15 đến 2026-09-16, lý do: việc gia đình.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 2,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ create_leave_request (tóm tắt hành động).",
+    "tool_call_id": "mock-2",
+    "tool_name": "create_leave_request",
+    "arguments": {
+      "employee_id": "NV001",
+      "start_date": "2026-09-15",
+      "end_date": "2026-09-16",
+      "reason": "việc gia đình"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "data_source": "fictional_hr_lab",
+      "request_id": "LR-0001",
+      "employee_id": "NV001",
+      "start_date": "2026-09-15",
+      "end_date": "2026-09-16",
+      "reason": "việc gia đình",
+      "days": 2,
+      "approval_status": "PENDING_APPROVAL",
+      "message": "Đã tạo đơn mô phỏng chờ quản lý duyệt, chưa được phê duyệt nghỉ phép."
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "server": "hr-assistant-mcp-server",
+      "tool": "create_leave_request",
+      "result": {
+        "status": "SUCCESS",
+        "data_source": "fictional_hr_lab",
+        "request_id": "LR-0001",
+        "employee_id": "NV001",
+        "start_date": "2026-09-15",
+        "end_date": "2026-09-16",
+        "reason": "việc gia đình",
+        "days": 2,
+        "approval_status": "PENDING_APPROVAL",
+        "message": "Đã tạo đơn mô phỏng chờ quản lý duyệt, chưa được phê duyệt nghỉ phép."
+      }
+    },
+    "llm_latency_ms": 0.136,
+    "tool_latency_ms": 0.043,
+    "latency_ms": 0.179
+  },
+  {
+    "case_id": "TC03",
+    "run_id": "a43637f1-8e0e-465e-949c-b0631981a87f",
+    "query": "Tạo đơn nghỉ phép cho NV001 từ 2026-09-15 đến 2026-09-16, lý do: việc gia đình.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 3,
+    "action_type": "FINAL_ANSWER",
+    "thought": "Mô hình trả lời sau các quan sát hiện có (nhãn sự kiện, không phải suy nghĩ nội bộ).",
+    "output": "Đã tạo đơn mô phỏng chờ quản lý duyệt, chưa được phê duyệt nghỉ phép. Mã đơn LR-0001, 2 ngày, trạng thái PENDING_APPROVAL.",
+    "latency_ms": 0.004
+  },
+  {
+    "case_id": "TC04",
+    "query": "Kiểm tra phép của NV001; nếu đủ hãy tạo đơn từ 2026-09-21 đến 2026-09-23, lý do: du lịch.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "action_type": "BASELINE",
+    "output": "[Mock Baseline] Tôi không có công cụ tra cứu hồ sơ hoặc tạo đơn.",
+    "latency_ms": 0.043
+  },
+  {
+    "case_id": "TC04",
+    "run_id": "c1f4be8b-6bdc-45a1-b44d-f5142106d23b",
+    "query": "Kiểm tra phép của NV001; nếu đủ hãy tạo đơn từ 2026-09-21 đến 2026-09-23, lý do: du lịch.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 1,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ hr_query (tóm tắt hành động).",
+    "tool_call_id": "mock-1",
+    "tool_name": "hr_query",
+    "arguments": {
+      "employee_id": "NV001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "data_source": "fictional_hr_lab",
+      "employee_id": "NV001",
+      "data": {
+        "full_name": "Nguyễn Văn An",
+        "leave_balance": 12,
+        "manager": "Trần Minh Hà",
+        "available_days": 12,
+        "reserved_days": 0,
+        "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+        "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+      }
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "server": "hr-assistant-mcp-server",
+      "tool": "hr_query",
+      "result": {
+        "status": "SUCCESS",
+        "data_source": "fictional_hr_lab",
+        "employee_id": "NV001",
+        "data": {
+          "full_name": "Nguyễn Văn An",
+          "leave_balance": 12,
+          "manager": "Trần Minh Hà",
+          "available_days": 12,
+          "reserved_days": 0,
+          "insurance_policy": "Dữ liệu lab: gói BH-LAB hỗ trợ khám tại cơ sở liên kết; gửi hồ sơ cho HR kiểm tra. Không phải chính sách thực tế của VinFast.",
+          "leave_policy": "Tính thứ Hai–thứ Sáu; chưa xét ngày lễ. Đơn chờ duyệt giữ chỗ phép trong phiên chạy."
+        }
+      }
+    },
+    "llm_latency_ms": 0.006,
+    "tool_latency_ms": 0.029,
+    "latency_ms": 0.035
+  },
+  {
+    "case_id": "TC04",
+    "run_id": "c1f4be8b-6bdc-45a1-b44d-f5142106d23b",
+    "query": "Kiểm tra phép của NV001; nếu đủ hãy tạo đơn từ 2026-09-21 đến 2026-09-23, lý do: du lịch.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 2,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ create_leave_request (tóm tắt hành động).",
+    "tool_call_id": "mock-2",
+    "tool_name": "create_leave_request",
+    "arguments": {
+      "employee_id": "NV001",
+      "start_date": "2026-09-21",
+      "end_date": "2026-09-23",
+      "reason": "du lịch"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "data_source": "fictional_hr_lab",
+      "request_id": "LR-0001",
+      "employee_id": "NV001",
+      "start_date": "2026-09-21",
+      "end_date": "2026-09-23",
+      "reason": "du lịch",
+      "days": 3,
+      "approval_status": "PENDING_APPROVAL",
+      "message": "Đã tạo đơn mô phỏng chờ quản lý duyệt, chưa được phê duyệt nghỉ phép."
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 5,
+      "server": "hr-assistant-mcp-server",
+      "tool": "create_leave_request",
+      "result": {
+        "status": "SUCCESS",
+        "data_source": "fictional_hr_lab",
+        "request_id": "LR-0001",
+        "employee_id": "NV001",
+        "start_date": "2026-09-21",
+        "end_date": "2026-09-23",
+        "reason": "du lịch",
+        "days": 3,
+        "approval_status": "PENDING_APPROVAL",
+        "message": "Đã tạo đơn mô phỏng chờ quản lý duyệt, chưa được phê duyệt nghỉ phép."
+      }
+    },
+    "llm_latency_ms": 0.018,
+    "tool_latency_ms": 0.043,
+    "latency_ms": 0.061
+  },
+  {
+    "case_id": "TC04",
+    "run_id": "c1f4be8b-6bdc-45a1-b44d-f5142106d23b",
+    "query": "Kiểm tra phép của NV001; nếu đủ hãy tạo đơn từ 2026-09-21 đến 2026-09-23, lý do: du lịch.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 3,
+    "action_type": "FINAL_ANSWER",
+    "thought": "Mô hình trả lời sau các quan sát hiện có (nhãn sự kiện, không phải suy nghĩ nội bộ).",
+    "output": "Đã tạo đơn mô phỏng chờ quản lý duyệt, chưa được phê duyệt nghỉ phép. Mã đơn LR-0001, 3 ngày, trạng thái PENDING_APPROVAL.",
+    "latency_ms": 0.004
+  },
+  {
+    "case_id": "TC05",
+    "query": "Tra cứu ngày phép của NV9999999.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "action_type": "BASELINE",
+    "output": "[Mock Baseline] Tôi không có công cụ tra cứu hồ sơ hoặc tạo đơn.",
+    "latency_ms": 0.029
+  },
+  {
+    "case_id": "TC05",
+    "run_id": "e57d996a-1545-4af9-bf9b-4bf17992bb50",
+    "query": "Tra cứu ngày phép của NV9999999.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 1,
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Mô hình chọn công cụ hr_query (tóm tắt hành động).",
+    "tool_call_id": "mock-1",
+    "tool_name": "hr_query",
+    "arguments": {
+      "employee_id": "NV9999999"
+    },
+    "observation": {
+      "status": "NOT_FOUND",
+      "data_source": "fictional_hr_lab",
+      "message": "Không tìm thấy nhân viên NV9999999."
+    },
+    "mcp_response": {
+      "jsonrpc": "2.0",
+      "id": 6,
+      "server": "hr-assistant-mcp-server",
+      "tool": "hr_query",
+      "result": {
+        "status": "NOT_FOUND",
+        "data_source": "fictional_hr_lab",
+        "message": "Không tìm thấy nhân viên NV9999999."
+      }
+    },
+    "llm_latency_ms": 0.008,
+    "tool_latency_ms": 0.02,
+    "latency_ms": 0.028
+  },
+  {
+    "case_id": "TC05",
+    "run_id": "e57d996a-1545-4af9-bf9b-4bf17992bb50",
+    "query": "Tra cứu ngày phép của NV9999999.",
+    "provider": "MockOfflineProvider",
+    "model": "HR-Offline-Mock",
+    "mode": "mock",
+    "started_at": "2026-09-13T08:23:17.584994+00:00",
+    "step": 2,
+    "action_type": "FINAL_ANSWER",
+    "thought": "Mô hình trả lời sau các quan sát hiện có (nhãn sự kiện, không phải suy nghĩ nội bộ).",
+    "output": "Không tìm thấy nhân viên NV9999999.",
+    "latency_ms": 0.004
+  }
+]

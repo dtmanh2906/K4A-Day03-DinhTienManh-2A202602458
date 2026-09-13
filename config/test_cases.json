@@ -1,0 +1,79 @@
+[
+  {
+    "id": "TC01",
+    "type": "direct_query",
+    "question": "Bạn có thể giới thiệu khả năng của trợ lý nhân sự không?",
+    "expected_behavior": "Trả lời giới thiệu, không gọi Tool.",
+    "complexity": "Medium",
+    "expected_tools": [],
+    "expected_statuses": [],
+    "expected_answer_contains": []
+  },
+  {
+    "id": "TC02",
+    "type": "single_tool_query",
+    "question": "Tra cứu số ngày phép còn lại và chính sách bảo hiểm của NV001.",
+    "expected_behavior": "Tra cứu và trả số phép cùng chính sách từ Observation.",
+    "complexity": "Medium",
+    "expected_tools": [
+      "hr_query"
+    ],
+    "expected_statuses": [
+      "SUCCESS"
+    ],
+    "expected_answer_contains": [
+      "NV001",
+      "12"
+    ]
+  },
+  {
+    "id": "TC03",
+    "type": "leave_request",
+    "question": "Tạo đơn nghỉ phép cho NV001 từ 2026-09-15 đến 2026-09-16, lý do: việc gia đình.",
+    "expected_behavior": "Tra cứu trước, tạo đúng đơn chờ duyệt rồi dùng Observation trả lời.",
+    "complexity": "Medium",
+    "expected_tools": [
+      "hr_query",
+      "create_leave_request"
+    ],
+    "expected_statuses": [
+      "SUCCESS",
+      "SUCCESS"
+    ],
+    "expected_answer_contains": [
+      "LR-0001"
+    ]
+  },
+  {
+    "id": "TC04",
+    "type": "multi_step_reasoning",
+    "question": "Kiểm tra phép của NV001; nếu đủ hãy tạo đơn từ 2026-09-21 đến 2026-09-23, lý do: du lịch.",
+    "expected_behavior": "Tra cứu trước, tạo đúng đơn chờ duyệt rồi dùng Observation trả lời.",
+    "complexity": "High",
+    "expected_tools": [
+      "hr_query",
+      "create_leave_request"
+    ],
+    "expected_statuses": [
+      "SUCCESS",
+      "SUCCESS"
+    ],
+    "expected_answer_contains": [
+      "LR-0001"
+    ]
+  },
+  {
+    "id": "TC05",
+    "type": "edge_case_handling",
+    "question": "Tra cứu ngày phép của NV9999999.",
+    "expected_behavior": "Báo không tìm thấy, không bịa hồ sơ.",
+    "complexity": "Medium",
+    "expected_tools": [
+      "hr_query"
+    ],
+    "expected_statuses": [
+      "NOT_FOUND"
+    ],
+    "expected_answer_contains": []
+  }
+]
